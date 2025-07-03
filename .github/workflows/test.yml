@@ -31,8 +31,7 @@ jobs:
       - uses: mozilla-actions/sccache-action@v0.0.9
       - uses: PyO3/maturin-action@v1
         with:
-          command: develop
-          args: --release
+          args: --release --out dist
           sccache: true
           rust-toolchain: nightly
       - name: pytest
