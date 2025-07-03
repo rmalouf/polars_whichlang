@@ -1,12 +1,18 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import TYPE_CHECKING, TypeAlias, Union
+from typing import TYPE_CHECKING, Union
 
 import polars as pl
 from polars.plugins import register_plugin_function
 
 if TYPE_CHECKING:
+    import sys
+
+    if sys.version_info >= (3, 10):
+        from typing import TypeAlias
+    else:
+        from typing_extensions import TypeAlias
     IntoExpr: TypeAlias = Union[pl.Expr, str, pl.Series]
 
 LIB = Path(__file__).parent

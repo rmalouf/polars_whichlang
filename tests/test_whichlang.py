@@ -1,6 +1,7 @@
 import polars as pl
 import pytest
-from polars.polars import ComputeError
+from polars.exceptions import ComputeError
+from polars.testing import assert_series_equal
 
 from polars_whichlang import detect_lang
 
@@ -17,9 +18,9 @@ def sample_df():
 
 
 def test_whichlang_dataframe(sample_df):
-    df = sample_df.with_columns(predictedicted=detect_lang("text"))
+    df = sample_df.with_columns(predicted=detect_lang("text"))
     assert len(df) == 5
-    assert all(df["lang"] == df["predicted"])
+    assert_series_equal(df["lang_code"], df["predicted"], check_names=False)
 
 
 def test_whichlang_lazyframe(sample_df):
@@ -27,7 +28,7 @@ def test_whichlang_lazyframe(sample_df):
     assert isinstance(df, pl.LazyFrame)
     df = df.collect()
     assert len(df) == 5
-    assert all(df["lang"] == df["predicted"])
+    assert_series_equal(df["lang_code"], df["predicted"], check_names=False)
 
 
 def test_whichlang_dataframe_error(sample_df):
@@ -39,4 +40,4 @@ def test_whichlang_lazyframe_error(sample_df):
     df = sample_df.lazy().with_columns(predicted=detect_lang("index"))
     assert isinstance(df, pl.LazyFrame)
     with pytest.raises(ComputeError):
-        df = df.collect()
+        _ = df.collect()

@@ -6,7 +6,7 @@ build-backend = "maturin"
 name = "polars-whichlang"
 version = "0.1.0"
 description = "Language identification plugin for polars"
-requires-python = ">=3.10"
+requires-python = ">=3.9"
 authors = [
   {name = "Rob Malouf", email="rmalouf@sdsu.edu"}
 ]
@@ -19,6 +19,7 @@ classifiers = [
   "Programming Language :: Rust",
   "Programming Language :: Python",
   "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
