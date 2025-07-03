@@ -35,8 +35,15 @@ jobs:
           args: --release
           sccache: true
           rust-toolchain: nightly
-      - run: make test
-
+      - name: pytest
+        shell: bash
+        run: |
+            set -e
+            python3 -m venv .venv
+            source .venv/bin/activate
+            pip install polars-whichlang --find-links dist --force-reinstall
+            pip install pytest
+            pytest
 
 
 
