@@ -1,24 +1,24 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, TypeAlias, Union
 
 import polars as pl
 from polars.plugins import register_plugin_function
 
-from polars_whichlang._internal import __version__ as __version__
-
 if TYPE_CHECKING:
-    from polars_whichlang.typing import IntoExprColumn
+    IntoExpr: TypeAlias = Union[pl.Expr, str, pl.Series]
 
 LIB = Path(__file__).parent
 
 
-def pig_latinnify(expr: IntoExprColumn) -> pl.Expr:
+def detect_lang(text: IntoExpr) -> pl.Expr:
     return register_plugin_function(
-        args=[expr],
+        args=[text],
         plugin_path=LIB,
-        function_name="pig_latinnify",
+        function_name="detect_lang",
         is_elementwise=True,
     )
 
+
+__version__ = "0.1.0"

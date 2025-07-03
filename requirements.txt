@@ -1,5 +1,3 @@
 polars
 maturin
-ruff
 pytest
-mypy
