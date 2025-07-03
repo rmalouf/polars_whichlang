@@ -19,7 +19,6 @@ classifiers = [
   "Programming Language :: Rust",
   "Programming Language :: Python",
   "Programming Language :: Python :: Implementation :: CPython",
-  "Programming Language :: Python :: Implementation :: PyPy",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
@@ -32,7 +31,7 @@ classifiers = [
 ]
 
 [project.urls]
-repository = "https://github.com/me/spam.git"
+repository = "https://github.com/rmalouf/polars_whichlang"
 
 [tool.maturin]
 module-name = "polars_whichlang._internal"

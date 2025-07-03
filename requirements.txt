@@ -1,3 +1,5 @@
 polars
 maturin
 pytest
+ruff
+mypy
