@@ -3,3 +3,4 @@ maturin
 pytest
 ruff
 mypy
+nox
