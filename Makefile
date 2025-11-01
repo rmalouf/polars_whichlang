@@ -5,12 +5,20 @@ venv:
 	.venv/bin/pip install -r requirements.txt
 
 install:
-	unset CONDA_PREFIX && \
+	unset CARGO_TARGET_DIR && \
 	source .venv/bin/activate && maturin develop
 
 install-release:
-	unset CONDA_PREFIX && \
+	unset CARGO_TARGET_DIR && \
 	source .venv/bin/activate && maturin develop --release
+
+build:
+	unset CARGO_TARGET_DIR && \
+	source .venv/bin/activate && maturin build
+
+build-release:
+	unset CARGO_TARGET_DIR && \
+	source .venv/bin/activate && maturin build --release
 
 pre-commit:
 	cargo +nightly fmt --all && cargo clippy --all-features
@@ -28,3 +36,8 @@ run: install
 run-release: install-release
 	source .venv/bin/activate && python run.py
 
+nox: venv build-release
+	source .venv/bin/activate && nox
+
+clean:
+	/bin/rm -rf .venv .nox target

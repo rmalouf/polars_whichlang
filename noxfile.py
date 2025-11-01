@@ -5,7 +5,7 @@ nox.options.default_venv_backend = "uv"
 PYTHONS = ["3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
 
 @nox.session(python=PYTHONS)
-@nox.parametrize("polars", ["1.0", "1.34"])
+@nox.parametrize("polars", ["1.0", "1.35"])
 def tests(session, polars):
     session.install(f'pytest')
     session.install(f'polars=={polars}')
