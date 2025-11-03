@@ -40,4 +40,4 @@ nox: venv build-release
 	source .venv/bin/activate && nox
 
 clean:
-	/bin/rm -rf .venv .nox target
+	/bin/rm -rf .venv .nox target polars_whichlang/_internal.abi3.so
