@@ -1,5 +1,8 @@
 # polars-whichlang
 
+[![PyPI version](https://img.shields.io/pypi/v/polars-whichlang.svg)](https://pypi.org/project/polars-whichlang/)
+
+
 This polars plugin is a wrapper for [whichlang](https://github.com/quickwit-oss/whichlang), 
 a very fast and reasonably accurate language identification library written in rust. 
 
@@ -22,14 +25,11 @@ It currently supports the following languages:
 - Turkish (tur)
 - Vietnamese (vie)
 
-
-
 ## Installation
 
 ```
 pip install polars-whichlang
 ```
-
 ## Examples
 
 ```python
