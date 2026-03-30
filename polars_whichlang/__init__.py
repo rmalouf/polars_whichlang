@@ -27,4 +27,4 @@ def detect_lang(text: IntoExpr) -> pl.Expr:
     )
 
 
-__version__ = "0.1.0"
+__version__ = "0.1.2"
